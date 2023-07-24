@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868404128969",
+    "project_id": "avisos-235bc",
+    "storage_bucket": "avisos-235bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868404128969:android:81c2e6880a77486d2af118",
+        "android_client_info": {
+          "package_name": "com.example.ifpr_avisos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868404128969-7vl4srd46n4iib5mmiehfivf3i64b7i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD459o4FE0yi5Qb_aBU0WufrmTGinjjMf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868404128969-7vl4srd46n4iib5mmiehfivf3i64b7i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

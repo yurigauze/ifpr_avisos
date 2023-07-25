@@ -15,21 +15,26 @@ class DrawerGlobal {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.account_circle_outlined),
-            title: const Text('Perfil'),
-            onTap: () => Navigator.pushNamed(context, '/perfil'),
-          ),
+              leading: const Icon(Icons.account_circle_outlined),
+              title: const Text('Perfil'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/perfil');
+              }),
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
-              Navigator.pushNamed(context, '/home');
+              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/home', (route) => false);
             },
           ),
           ListTile(
             leading: const Icon(Icons.people_outline_rounded),
             title: const Text('Alunos'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/alunosList');
             },
           ),
@@ -37,6 +42,7 @@ class DrawerGlobal {
             leading: const Icon(Icons.school_outlined),
             title: const Text('Professores'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/professorList');
             },
           ),
@@ -44,6 +50,7 @@ class DrawerGlobal {
             leading: const Icon(Icons.timelapse),
             title: const Text('Turnos'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/turnoList');
             },
           ),
@@ -51,6 +58,7 @@ class DrawerGlobal {
             leading: const Icon(Icons.class_outlined),
             title: const Text('Turmas'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/turmaLista');
             },
           ),
@@ -58,6 +66,7 @@ class DrawerGlobal {
             leading: Icon(Icons.notifications_outlined),
             title: const Text('Avisos'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.pushNamed(context, '');
             },
           ),

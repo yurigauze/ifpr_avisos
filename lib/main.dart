@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifpr_avisos/Controles/Notifications/Custom_firebase_messager.dart';
 import 'package:ifpr_avisos/Login.dart';
 import 'package:ifpr_avisos/View/Formas%20e%20Lista/AlunoForm.dart';
 import 'package:ifpr_avisos/View/Formas%20e%20Lista/Aluno_por_turma.dart';
@@ -15,9 +16,15 @@ import 'package:ifpr_avisos/introducao.dart';
 import 'color_schemes.g.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await CustomFirebaseMessaging().inicialize();
+  await CustomFirebaseMessaging().getTokenFirebase();
+
   runApp(const MyApp());
 }
 

@@ -11,12 +11,7 @@ class Introducao extends StatelessWidget {
       Navigator.pushNamed(context, '/login');
     });
 
-    // Verifica o tema atual do sistema
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     // Define o caminho para o arquivo SVG baseado no tema
-    final imagePath =
-        isDarkMode ? 'assets/ifpr-logo-dark.svg' : 'assets/ifpr-logo-light.svg';
 
     return Scaffold(
       body: Center(
@@ -25,11 +20,9 @@ class Introducao extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset('assets/ifpr-logo-light.png'),
               // Utilize o SvgPicture.asset para exibir o arquivo SVG
-              SvgPicture.asset(
-                imagePath,
-                width: 500,
-              ),
+
               const Text(
                 'Guia de Campus',
                 style: TextStyle(

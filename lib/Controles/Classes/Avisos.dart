@@ -4,10 +4,19 @@ class Aviso {
   String? id;
   final String? titulo;
   final String? corpo;
-  final List<String>? ids;
+  final List<String>? turnoIds;
+  final List<String>? turmaIds;
+  final List<String>? alunoIds;
   final bool? paraTodos;
 
-  Aviso({this.id, this.titulo, this.corpo, this.ids, this.paraTodos});
+  Aviso(
+      {this.id,
+      this.titulo,
+      this.corpo,
+      this.turnoIds,
+      this.turmaIds,
+      this.alunoIds,
+      this.paraTodos});
 
   static Aviso fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options) {
@@ -17,7 +26,9 @@ class Aviso {
       id: snapshot.id,
       titulo: data['titulo'],
       corpo: data['corpo'],
-      ids: data['ids'],
+      turnoIds: data['turnoIds'],
+      turmaIds: data['turmaIds'],
+      alunoIds: data['alunoIds'],
       paraTodos: data['todos'],
     );
   }
@@ -27,7 +38,9 @@ class Aviso {
       if (titulo != null) "titulo": titulo,
       if (corpo != null) "corpo": corpo,
       'todos': paraTodos,
-      "ids": ids,
+      "turnoIds": turnoIds,
+      "turmaIds": turnoIds,
+      "alunoIds": turnoIds,
     };
   }
 }

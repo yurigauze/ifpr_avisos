@@ -22,6 +22,7 @@ class _TurmaListaState extends State<TurmaLista> {
       appBar: AppBar(title: const Text('Lista de Turmas')),
       drawer: DrawerGlobal().criarDrawer(context),
       floatingActionButton: BotaoAdicionar(
+        texto: 'Adicionar Turma',
         acao: () => Navigator.pushNamed(context, '/turmaForm')
             .then((value) => buscarTurma()),
       ),

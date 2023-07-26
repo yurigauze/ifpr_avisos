@@ -22,6 +22,7 @@ class _AlunosListaState extends State<AlunosLista> {
       appBar: AppBar(title: const Text('Lista de Alunos')),
       drawer: DrawerGlobal().criarDrawer(context),
       floatingActionButton: BotaoAdicionar(
+        texto: 'Adicionar',
         acao: () => Navigator.pushNamed(context, '/alunoForm')
             .then((value) => buscarAluno()),
       ),

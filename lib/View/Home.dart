@@ -3,6 +3,7 @@ import 'package:ifpr_avisos/Controles/Classes/Avisos.dart';
 import 'package:ifpr_avisos/Controles/Interfaces/Aviso_Interface.dart';
 import 'package:ifpr_avisos/Controles/Services/AvisosService.dart';
 import 'package:ifpr_avisos/View/BotaoAdc.dart';
+
 import 'package:ifpr_avisos/View/Widgets/DrawerADM.dart';
 
 class Home extends StatefulWidget {
@@ -19,14 +20,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Início'),
+        title: const Text('Avisos'),
       ),
       drawer: DrawerGlobal().criarDrawer(context),
       floatingActionButton: BotaoAdicionar(
-        acao: () => Navigator.pushNamed(context, '/turmaForm')
+        texto: "Disparar Aviso",
+        acao: () => Navigator.pushNamed(context, '/disparos')
             .then((value) => buscarTurma()),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         child: criarLista(context),
       ),
@@ -53,7 +54,8 @@ class _HomeState extends State<Home> {
 
   Future<List<Aviso>> buscarTurma() {
     setState(() {});
-    return dao.consultarDocumentos(null, null, null);
+    return dao.consultarDocumentos(
+        "GbXLxT8pka1LTSEFelgo", "hP7o2DdconYrrGlbJVNF", "pjcHze8AZoOZvaNfh6M3");
   }
 
   Widget criarItemLista(BuildContext context, Aviso aviso) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifpr_avisos/color_schemes.g.dart';
 
 class DrawerGlobal {
   Widget criarDrawer(BuildContext context) {
@@ -7,6 +8,7 @@ class DrawerGlobal {
         padding: EdgeInsets.zero,
         children: <Widget>[
           const UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Color.fromARGB(255, 0, 108, 72)),
             accountName: Text('Usuario'),
             accountEmail: Text('RA Usuario'),
             currentAccountPicture: CircleAvatar(

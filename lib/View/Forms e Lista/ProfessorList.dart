@@ -22,6 +22,7 @@ class _ProfessorListaState extends State<ProfessorLista> {
       appBar: AppBar(title: const Text('Lista de Professores')),
       drawer: DrawerGlobal().criarDrawer(context),
       floatingActionButton: BotaoAdicionar(
+        texto: 'Adicionar',
         acao: () => Navigator.pushNamed(context, '/professorForm')
             .then((value) => buscarProfessor()),
       ),

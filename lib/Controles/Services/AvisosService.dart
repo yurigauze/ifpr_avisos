@@ -80,6 +80,10 @@ class AvisoService implements AvisoInterface {
         {
           'titulo': aviso.titulo,
           'corpo': aviso.corpo,
+          if (aviso.paraTodos != null) "todos": aviso.paraTodos,
+          if (aviso.turnoIds != null) "turnoIds": aviso.turnoIds,
+          if (aviso.turmaIds != null) "turmaIds": aviso.turmaIds,
+          if (aviso.alunoIds != null) "alunoIds": aviso.alunoIds,
         },
         SetOptions(
             merge:
@@ -91,6 +95,10 @@ class AvisoService implements AvisoInterface {
         {
           'titulo': aviso.titulo,
           'corpo': aviso.corpo,
+          if (aviso.paraTodos != null) "todos": aviso.paraTodos,
+          if (aviso.turnoIds != null) "turnoIds": aviso.turnoIds,
+          if (aviso.turmaIds != null) "turmaIds": aviso.turmaIds,
+          if (aviso.alunoIds != null) "alunoIds": aviso.alunoIds,
         },
       );
       // Atualiza o ID do aluno com o ID gerado pelo Firestore

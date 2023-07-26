@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ifpr_avisos/Controles/Notifications/Custom_firebase_messager.dart';
 import 'package:ifpr_avisos/Login.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/AlunoForm.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/Aluno_por_turma.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/AlunosList.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/Turma_por_Turno.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/ProfessorForm.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/ProfessorList.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/TurmaForm.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/TurmaList.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/TurnoForm.dart';
-import 'package:ifpr_avisos/View/Formas%20e%20Lista/TurnoLista.dart';
+import 'package:ifpr_avisos/View/Disparos.dart';
+import 'package:ifpr_avisos/View/Disparos/dispararTodos.dart';
+import 'package:ifpr_avisos/View/Disparos/dispararTurmas.dart';
+import 'package:ifpr_avisos/View/Disparos/disparoTurma.dart';
+import 'package:ifpr_avisos/View/Disparos/disparoTurno.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/AlunoForm.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/Aluno_por_turma.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/AlunosList.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/Turma_por_Turno.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/ProfessorForm.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/ProfessorList.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/TurmaForm.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/TurmaList.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/TurnoForm.dart';
+import 'package:ifpr_avisos/View/Forms%20e%20Lista/TurnoLista.dart';
 import 'package:ifpr_avisos/View/Home.dart';
 import 'package:ifpr_avisos/introducao.dart';
 import 'color_schemes.g.dart';
@@ -51,6 +56,11 @@ class MyApp extends StatelessWidget {
         '/turmaForm': (context) => TurmaForm(),
         '/turmasPorTurno': (context) => TurmasPorTurno(),
         '/alunosPorTurma': (context) => AlunoPorTurma(),
+        '/disparos': (context) => Disparos(),
+        '/disparoTodos': (context) => DispararTodos(),
+        '/dispararTurma': (context) => DispararTurma(),
+        '/dispararTurno': (context) => DispararTurno(),
+        '/dispararAluno': (context) => DispararAluno(),
       },
     );
   }

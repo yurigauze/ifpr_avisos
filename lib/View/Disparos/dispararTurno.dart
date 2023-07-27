@@ -7,21 +7,21 @@ import 'package:ifpr_avisos/View/Widgets/Widget_Disparos/BotaoDisparo.dart';
 import 'package:ifpr_avisos/View/Widgets/Widget_Disparos/Campo_corpo.dart';
 import 'package:ifpr_avisos/View/Widgets/Widget_Disparos/Campo_titulo.dart';
 
-class DispararTurma extends StatefulWidget {
-  const DispararTurma({Key? key}) : super(key: key);
+class DispararTurno extends StatefulWidget {
+  const DispararTurno({Key? key}) : super(key: key);
 
   @override
-  State<DispararTurma> createState() => _DispararTurma();
+  State<DispararTurno> createState() => _DispararTurno();
 }
 
-class _DispararTurma extends State<DispararTurma> {
+class _DispararTurno extends State<DispararTurno> {
   final formKey = GlobalKey<FormState>();
-  String? selectedTurmaId;
+  String? selectedTurnoId;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Disparar para Turma")),
+      appBar: AppBar(title: const Text("Disparar para Turno")),
       body: Center(
           child: Container(
         width: 350,
@@ -34,7 +34,7 @@ class _DispararTurma extends State<DispararTurma> {
                 const SizedBox(height: 10),
                 campoCorpo,
                 const SizedBox(height: 10),
-                const Text("Selecione uma Turma"),
+                const Text("Selecione um Turno"),
                 buildDropdownButton(),
                 const SizedBox(height: 10),
                 botaoSalvar(context),
@@ -85,31 +85,31 @@ class _DispararTurma extends State<DispararTurma> {
 
   Widget buildDropdownButton() {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('Turmas').snapshots(),
+      stream: FirebaseFirestore.instance.collection('Turnos').snapshots(),
       builder: (context, snapshot) {
-        List<DropdownMenuItem<String>> turmasItens = [];
+        List<DropdownMenuItem<String>> turnosItens = [];
         if (!snapshot.hasData) {
           return const CircularProgressIndicator();
         } else {
-          final turmas = snapshot.data?.docs.reversed.toList();
-          for (var turma in turmas!) {
-            turmasItens.add(
+          final turnos = snapshot.data?.docs.reversed.toList();
+          for (var turno in turnos!) {
+            turnosItens.add(
               DropdownMenuItem(
-                value: turma.id,
-                child: Text(turma['nome']),
+                value: turno.id,
+                child: Text(turno['nome']),
               ),
             );
           }
         }
         return DropdownButton<String>(
-          items: turmasItens,
-          onChanged: (turmaValue) {
+          items: turnosItens,
+          onChanged: (turnoValue) {
             setState(() {
-              selectedTurmaId = turmaValue;
+              selectedTurnoId = turnoValue;
             });
-            print(turmaValue);
+            print(turnoValue);
           },
-          value: selectedTurmaId,
+          value: selectedTurnoId,
           isExpanded: false,
         );
       },
@@ -120,7 +120,8 @@ class _DispararTurma extends State<DispararTurma> {
     return Aviso(
       titulo: campoTitulo.controle.text,
       corpo: campoTitulo.controle.text,
-      turmaIds: [selectedTurmaId!],
+      turnoIds: [selectedTurnoId!],
+      paraTodos: false,
     );
   }
 }

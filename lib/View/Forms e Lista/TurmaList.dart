@@ -65,8 +65,28 @@ class _TurmaListaState extends State<TurmaLista> {
           print(turma);
         },
         excluir: () async {
-          await dao.excluir(turma.id!);
-          buscarTurma();
+          String turmanome = turma.nome!;
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("Confirmar Exclusão?"),
+              content: Text('Turma a ser excluida: \n$turmanome'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("Fechar"),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    await dao.excluir(turma.id!);
+                    buscarTurma();
+                  },
+                  child: const Text("Excluir"),
+                ),
+              ],
+            ),
+          );
         });
   }
 }

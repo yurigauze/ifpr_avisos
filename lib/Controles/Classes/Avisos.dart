@@ -22,13 +22,22 @@ class Aviso {
       SnapshotOptions? options) {
     final data = snapshot.data();
     if (data == null) throw Exception("DocumentSnapshot data is null!");
+    List<String>? turmaIds = data['turmaIds'] != null
+        ? (data['turmaIds'] as List<dynamic>).cast<String>()
+        : null;
+    List<String>? alunoIds = data['alunoIds'] != null
+        ? (data['alunoIds'] as List<dynamic>).cast<String>()
+        : null;
+    List<String>? turnoIds = data['turnoIds'] != null
+        ? (data['turnoIds'] as List<dynamic>).cast<String>()
+        : null;
     return Aviso(
       id: snapshot.id,
       titulo: data['titulo'],
       corpo: data['corpo'],
-      turnoIds: data['turnoIds'],
-      turmaIds: data['turmaIds'],
-      alunoIds: data['alunoIds'],
+      turnoIds: turnoIds,
+      turmaIds: turmaIds,
+      alunoIds: alunoIds,
       paraTodos: data['todos'],
     );
   }
@@ -37,10 +46,10 @@ class Aviso {
     return {
       if (titulo != null) "titulo": titulo,
       if (corpo != null) "corpo": corpo,
-      'todos': paraTodos,
-      "turnoIds": turnoIds,
-      "turmaIds": turnoIds,
-      "alunoIds": turnoIds,
+      if (paraTodos != null) 'todos': paraTodos,
+      if (turnoIds != null) "turnoIds": turnoIds,
+      if (turnoIds != null) "turmaIds": turnoIds,
+      if (turnoIds != null) "alunoIds": turnoIds,
     };
   }
 }

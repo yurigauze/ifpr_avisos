@@ -27,36 +27,43 @@ class AvisoService implements AvisoInterface {
     CollectionReference avisoCollection =
         FirebaseFirestore.instance.collection('Avisos');
 
-    // Comece com uma consulta sem nenhum filtro
-    Query query = avisoCollection;
+    // Comece com uma consulta vazia (sem documentos)
 
     // Verifique se o turnoId não é nulo e adicione o filtro à consulta
+    List<Aviso> avisos = [];
+
+    // Consulta usando apenas o filtro de turnoId
     if (turnoId != null) {
-      query = query.where("turnoIds", arrayContains: turnoId);
+      QuerySnapshot querySnapshotTurno =
+          await avisoCollection.where("turnoIds", arrayContains: turnoId).get();
+      avisos.addAll(querySnapshotTurno.docs.map((doc) => Aviso.fromFirestore(
+          doc as DocumentSnapshot<Map<String, dynamic>>, null)));
     }
 
-    // Verifique se o turmaId não é nulo e adicione o filtro à consulta
+    // Consulta usando apenas o filtro de turmaId
     if (turmaId != null) {
-      query = query.where("turmaIds", arrayContains: turmaId);
+      QuerySnapshot querySnapshotTurma =
+          await avisoCollection.where("turmaIds", arrayContains: turmaId).get();
+      avisos.addAll(querySnapshotTurma.docs.map((doc) => Aviso.fromFirestore(
+          doc as DocumentSnapshot<Map<String, dynamic>>, null)));
     }
 
-    // Verifique se o alunoId não é nulo e adicione o filtro à consulta
+    // Consulta usando apenas o filtro de alunoId
     if (alunoId != null) {
-      query = query.where("alunoIds", arrayContains: alunoId);
+      QuerySnapshot querySnapshotAluno =
+          await avisoCollection.where("alunoIds", arrayContains: alunoId).get();
+      avisos.addAll(querySnapshotAluno.docs.map((doc) => Aviso.fromFirestore(
+          doc as DocumentSnapshot<Map<String, dynamic>>, null)));
     }
 
+    // consulta quando é para todos
     if (alunoId != null && turmaId != null && turnoId != null) {
-      query = query.where("todos", isEqualTo: true);
+      QuerySnapshot querySnapshotAluno =
+          await avisoCollection.where("todos", isEqualTo: true).get();
+      avisos.addAll(querySnapshotAluno.docs.map((doc) => Aviso.fromFirestore(
+          doc as DocumentSnapshot<Map<String, dynamic>>, null)));
     }
 
-    // Execute a consulta e obtenha os documentos correspondentes
-    QuerySnapshot querySnapshot = await query.get();
-
-    final avisos = querySnapshot.docs
-        .map((doc) => Aviso.fromFirestore(
-            doc as DocumentSnapshot<Map<String, dynamic>>, null))
-        .toList();
-    // Retorne a lista de documentos encontrados
     return avisos;
   }
 

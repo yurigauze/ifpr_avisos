@@ -65,8 +65,28 @@ class _AlunosListaState extends State<AlunosLista> {
           print(aluno);
         },
         excluir: () async {
-          await dao.excluir(aluno.id!);
-          buscarAluno();
+          String alunonome = aluno.nome!;
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("Confirmar Exclusão?"),
+              content: Text('Turma a ser excluida: \n$alunonome'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("Fechar"),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    await dao.excluir(aluno.id!);
+                    buscarAluno();
+                  },
+                  child: const Text("Excluir"),
+                ),
+              ],
+            ),
+          );
         });
   }
 }

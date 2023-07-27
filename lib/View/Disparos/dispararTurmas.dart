@@ -121,6 +121,7 @@ class _DispararAluno extends State<DispararAluno> {
       titulo: campoTitulo.controle.text,
       corpo: campoTitulo.controle.text,
       alunoIds: [selectedAlunoId!],
+      paraTodos: false,
     );
   }
 }

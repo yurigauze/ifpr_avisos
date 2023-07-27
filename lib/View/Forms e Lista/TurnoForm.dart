@@ -41,9 +41,15 @@ class _TurnoForm extends State<TurnoForm> {
     );
   }
 
-  final campoDesc = CampoDescricao(controle: TextEditingController());
-  final campoNome =
-      CampoDescricao(controle: TextEditingController(), enabled: false);
+  final campoDesc = CampoDescricao(
+    controle: TextEditingController(),
+    label: 'Descrição',
+  );
+  final campoNome = CampoDescricao(
+    controle: TextEditingController(),
+    enabled: false,
+    label: 'Nome do Turno',
+  );
 
   Widget botaoSalvar(BuildContext context) {
     return Botao(

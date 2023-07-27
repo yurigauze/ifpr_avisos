@@ -6,12 +6,18 @@ class CampoDescricao extends StatelessWidget {
   final mascara = '[A-Za-z\u00C0-\u00FF ]';
   final TextEditingController controle;
   final bool enabled;
-  const CampoDescricao({required this.controle, this.enabled = true, Key? key})
+  final String label;
+  const CampoDescricao(
+      {required this.controle,
+      this.enabled = true,
+      Key? key,
+      required this.label})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       controller: controle,
       keyboardType: TextInputType.name,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(mascara))],
@@ -20,8 +26,8 @@ class CampoDescricao extends StatelessWidget {
             ehVazio(valorDigitado) ?? temMinimoCaracteres(valorDigitado);
         return msnErro;
       },
-      decoration: const InputDecoration(
-          label: Text('Descrição:'), hintText: 'Informe a Descrição da Turma'),
+      decoration: InputDecoration(
+          label: Text(label), hintText: 'Informe a Descrição da Turma'),
     );
   }
 

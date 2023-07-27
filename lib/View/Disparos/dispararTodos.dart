@@ -81,7 +81,7 @@ class _DispararTodos extends State<DispararTodos> {
   Aviso preencherDTO() {
     return Aviso(
       titulo: campoTitulo.controle.text,
-      corpo: campoTitulo.controle.text,
+      corpo: campoCorpo.controle.text,
       paraTodos: true,
     );
   }
